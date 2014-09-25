@@ -133,6 +133,17 @@ ACTION_MODIFY_SNAPSHOT_ATTRIBUTES = "ModifySnapshotAttributes"
 ACTION_CAPTURE_INSTANCE_FROM_SNAPSHOT = "CaptureInstanceFromSnapshot"
 ACTION_CREATE_VOLUME_FROM_SNAPSHOT = "CreateVolumeFromSnapshot"
 
+# shared storage
+ACTION_CREATE_S2 = "CreateS2"
+ACTION_STOP_S2 = "StopS2"
+ACTION_START_S2 = "StartS2"
+ACTION_SUSPEND_S2 = "SuspendS2"
+ACTION_RESUME_S2 = "ResumeS2"
+ACTION_TERMINATE_S2 = "TerminateS2"
+ACTION_CEASE_S2 = "CeaseS2"
+ACTION_UPDATE_S2 = "UpdateS2"
+ACTION_DESCRIBE_S2 = "DescribeS2"
+
 ########## Constants for resource ##########
 
 # sg

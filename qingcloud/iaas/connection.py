@@ -1075,6 +1075,31 @@ class APIConnection(HttpConnection):
 
         return self.send_request(action, body)
 
+    def describe_s2(self, s2,
+                          status=None,
+                          owner=None,
+                          verbose=0,
+                          s2_name=None,
+                          search_word=None,
+                          limit=None,
+                          offset=None,
+                          sort_key=None,
+                          reverse=None,
+                          **ignore):
+        """
+        """
+        valid_keys = ['s2', 'status', 'owner', 'verbose', 's2_name',
+                'limit', 'offset', 'reverse']
+        body = filter_out_none(locals(), valid_keys)
+        if not self.req_checker.check_params(body,
+                required_params=[],
+                integer_params=['verbose', 'limit', 'offset', 'reverse'],
+                list_params=[]
+                ):
+            return None
+
+        return self.send_request(action, body)
+
     def create_routers(self, count=1,
                              router_name=None,
                              security_group=None,
@@ -2113,6 +2138,135 @@ class APIConnection(HttpConnection):
         body = filter_out_none(locals(), valid_keys)
         if not self.req_checker.check_params(body,
                 required_params=["snapshot"],
+                integer_params=[],
+                list_params=[]
+                ):
+            return None
+
+        return self.send_request(action, body)
+
+    def create_s2(self, s2_type=S2_TYPE_SMALL,
+                        vol_type=VOLUME_TYPE_HIGH_PERFORMANCE,
+                        vol_size=50,
+                        vxnet_id,
+                        fs_type=S2_FS_TYPE_EXT4,
+                        lvm_enabled=1,
+                        s2_name=None,
+                        **ignore):
+        """
+        """
+        action = const.ACTION_CREATE_S2
+        valid_keys = ['s2_type', 'vol_type', 'vol_size', 'vxnet_id', 'fs_type', 'lvm_enabled']
+        body = filter_out_none(locals(), valid_keys)
+        if not self.req_checker.check_params(body,
+                required_params=['vxnet_id'],
+                integer_params=['vol_size', 'lvm_enabled'],
+                list_params=[]
+                ):
+            return None
+
+        return self.send_request(action, body)
+
+    def start_s2(self, s2,
+                       **ignore):
+        """
+        """
+        action = const.ACTION_START_S2
+        body = {'s2': s2}
+        if not self.req_checker.check_params(body,
+                required_params=['s2'],
+                integer_params=[],
+                list_params=[]
+                ):
+            return None
+
+        return self.send_request(action, body)
+
+    def stop_s2(self, s2,
+                      **ignore):
+        """
+        """
+        action = const.ACTION_STOP_S2
+        body = {'s2': s2}
+        if not self.req_checker.check_params(body,
+                required_params=['s2'],
+                integer_params=[],
+                list_params=[]
+                ):
+            return None
+
+        return self.send_request(action, body)
+
+    def suspend_s2(self, s2,
+                         sub_code=64,
+                         **ignore):
+        """
+        """
+        action = const.ACTION_SUSPEND_S2
+        body = {'s2': s2}
+        if not self.req_checker.check_params(body,
+                required_params=['s2', 'sub_code'],
+                integer_params=['sub_code'],
+                list_params=[]
+                ):
+            return None
+
+        return self.send_request(action, body)
+
+    def resume_s2(self, s2,
+                        **ignore):
+        """
+        """
+        action = const.ACTION_RESUME_S2
+        body = {'s2': s2}
+        if not self.req_checker.check_params(body,
+                required_params=['s2'],
+                integer_params=[],
+                list_params=[]
+                ):
+            return None
+
+        return self.send_request(action, body)
+
+    def terminate_s2(self, s2,
+                           unlease=1,
+                           **ignore):
+        """
+        """
+        action = const.ACTION_TERMINATE_S2
+        body = {'s2': s2}
+        if not self.req_checker.check_params(body,
+                required_params=['s2', 'unlease'],
+                integer_params=['unlease'],
+                list_params=[]
+                ):
+            return None
+
+        return self.send_request(action, body)
+
+    def cease_s2(self, s2,
+                       **ignore):
+        """
+        """
+        action = const.ACTION_START_S2
+        body = {'s2': s2}
+        if not self.req_checker.check_params(body,
+                required_params=['s2'],
+                integer_params=[],
+                list_params=[]
+                ):
+            return None
+
+        return self.send_request(action, body)
+
+    def update_s2(self, s2,
+                        **ignore):
+        """
+        """
+        action = const.ACTION_UPDATE_S2
+        body = {'s2': s2}
+        if not self.req_checker.check_params(body,
+                required_params=['s2'],
                 integer_params=[],
                 list_params=[]
                 ):
