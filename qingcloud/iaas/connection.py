@@ -1088,6 +1088,7 @@ class APIConnection(HttpConnection):
                           **ignore):
         """
         """
+        action = const.ACTION_DESCRIBE_S2
         valid_keys = ['s2', 'status', 'owner', 'verbose', 's2_name',
                 'limit', 'offset', 'reverse']
         body = filter_out_none(locals(), valid_keys)
@@ -2145,11 +2146,11 @@ class APIConnection(HttpConnection):
 
         return self.send_request(action, body)
 
-    def create_s2(self, s2_type=S2_TYPE_SMALL,
-                        vol_type=VOLUME_TYPE_HIGH_PERFORMANCE,
+    def create_s2(self, s2_type='small',
+                        vol_type=0,
                         vol_size=50,
-                        vxnet_id,
-                        fs_type=S2_FS_TYPE_EXT4,
+                        vxnet_id=None,
+                        fs_type='ext4',
                         lvm_enabled=1,
                         s2_name=None,
                         **ignore):
@@ -2160,7 +2161,7 @@ class APIConnection(HttpConnection):
         body = filter_out_none(locals(), valid_keys)
         if not self.req_checker.check_params(body,
                 required_params=['vxnet_id'],
-                integer_params=['vol_size', 'lvm_enabled'],
+                integer_params=['vol_type', 'vol_size', 'lvm_enabled'],
                 list_params=[]
                 ):
             return None
