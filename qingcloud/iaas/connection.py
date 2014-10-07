@@ -2249,7 +2249,7 @@ class APIConnection(HttpConnection):
                        **ignore):
         """
         """
-        action = const.ACTION_START_S2
+        action = const.ACTION_CEASE_S2
         body = {'s2': s2}
         if not self.req_checker.check_params(body,
                 required_params=['s2'],
