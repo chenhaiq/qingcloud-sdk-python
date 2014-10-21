@@ -1075,32 +1075,6 @@ class APIConnection(HttpConnection):
 
         return self.send_request(action, body)
 
-    def describe_s2(self, s2,
-                          status=None,
-                          owner=None,
-                          verbose=0,
-                          s2_name=None,
-                          search_word=None,
-                          limit=None,
-                          offset=None,
-                          sort_key=None,
-                          reverse=None,
-                          **ignore):
-        """
-        """
-        action = const.ACTION_DESCRIBE_S2
-        valid_keys = ['s2', 'status', 'owner', 'verbose', 's2_name',
-                'limit', 'offset', 'reverse']
-        body = filter_out_none(locals(), valid_keys)
-        if not self.req_checker.check_params(body,
-                required_params=[],
-                integer_params=['verbose', 'limit', 'offset', 'reverse'],
-                list_params=[]
-                ):
-            return None
-
-        return self.send_request(action, body)
-
     def create_routers(self, count=1,
                              router_name=None,
                              security_group=None,
@@ -2153,11 +2127,14 @@ class APIConnection(HttpConnection):
                         fs_type='ext4',
                         lvm_enabled=1,
                         s2_name=None,
+                        vol_id=None,
+                        private_ip=None,
                         **ignore):
         """
         """
         action = const.ACTION_CREATE_S2
-        valid_keys = ['s2_type', 'vol_type', 'vol_size', 'vxnet_id', 'fs_type', 'lvm_enabled']
+        valid_keys = ['s2_type', 'vol_type', 'vol_size', 'vxnet_id', 'fs_type',
+                      'lvm_enabled', 's2_name', 'vol_id', 'private_ip']
         body = filter_out_none(locals(), valid_keys)
         if not self.req_checker.check_params(body,
                 required_params=['vxnet_id'],
@@ -2183,16 +2160,16 @@ class APIConnection(HttpConnection):
 
         return self.send_request(action, body)
 
-    def stop_s2(self, s2,
+    def stop_s2(self, s2s,
                       **ignore):
         """
         """
         action = const.ACTION_STOP_S2
-        body = {'s2': s2}
+        body = {'s2s': s2s}
         if not self.req_checker.check_params(body,
-                required_params=['s2'],
+                required_params=['s2s'],
                 integer_params=[],
-                list_params=[]
+                list_params=['s2s']
                 ):
             return None
 
@@ -2260,16 +2237,42 @@ class APIConnection(HttpConnection):
 
         return self.send_request(action, body)
 
-    def update_s2(self, s2,
+    def update_s2(self, s2s,
                         **ignore):
         """
         """
         action = const.ACTION_UPDATE_S2
-        body = {'s2': s2}
+        body = {'s2s': s2s}
         if not self.req_checker.check_params(body,
-                required_params=['s2'],
+                required_params=['s2s'],
                 integer_params=[],
-                list_params=[]
+                list_params=['s2s']
+                ):
+            return None
+
+        return self.send_request(action, body)
+
+    def describe_s2(self, s2,
+                          status=None,
+                          owner=None,
+                          verbose=0,
+                          s2_name=None,
+                          search_word=None,
+                          limit=None,
+                          offset=None,
+                          sort_key=None,
+                          reverse=None,
+                          **ignore):
+        """
+        """
+        action = const.ACTION_DESCRIBE_S2
+        valid_keys = ['s2s', 'status', 'owner', 'verbose', 's2_name',
+                'limit', 'offset', 'reverse']
+        body = filter_out_none(locals(), valid_keys)
+        if not self.req_checker.check_params(body,
+                required_params=[],
+                integer_params=['verbose', 'limit', 'offset', 'reverse'],
+                list_params=['s2s']
                 ):
             return None
 
