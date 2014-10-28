@@ -2145,16 +2145,16 @@ class APIConnection(HttpConnection):
 
         return self.send_request(action, body)
 
-    def start_s2(self, s2,
+    def start_s2(self, s2s,
                        **ignore):
         """
         """
         action = const.ACTION_START_S2
-        body = {'s2': s2}
+        body = {'s2s': s2s}
         if not self.req_checker.check_params(body,
-                required_params=['s2'],
+                required_params=['s2s'],
                 integer_params=[],
-                list_params=[]
+                list_params=['s2s']
                 ):
             return None
 
@@ -2175,63 +2175,63 @@ class APIConnection(HttpConnection):
 
         return self.send_request(action, body)
 
-    def suspend_s2(self, s2,
+    def suspend_s2(self, s2s,
                          sub_code=64,
                          **ignore):
         """
         """
         action = const.ACTION_SUSPEND_S2
-        body = {'s2': s2}
+        body = {'s2s': s2s}
         if not self.req_checker.check_params(body,
-                required_params=['s2', 'sub_code'],
+                required_params=['s2s', 'sub_code'],
                 integer_params=['sub_code'],
-                list_params=[]
+                list_params=['s2s']
                 ):
             return None
 
         return self.send_request(action, body)
 
-    def resume_s2(self, s2,
+    def resume_s2(self, s2s,
                         **ignore):
         """
         """
         action = const.ACTION_RESUME_S2
-        body = {'s2': s2}
+        body = {'s2s': s2s}
         if not self.req_checker.check_params(body,
-                required_params=['s2'],
+                required_params=['s2s'],
                 integer_params=[],
-                list_params=[]
+                list_params=['s2s']
                 ):
             return None
 
         return self.send_request(action, body)
 
-    def terminate_s2(self, s2,
+    def terminate_s2(self, s2s,
                            unlease=1,
                            **ignore):
         """
         """
         action = const.ACTION_TERMINATE_S2
-        body = {'s2': s2}
+        body = {'s2s': s2s}
         if not self.req_checker.check_params(body,
-                required_params=['s2', 'unlease'],
+                required_params=['s2s', 'unlease'],
                 integer_params=['unlease'],
-                list_params=[]
+                list_params=['s2s']
                 ):
             return None
 
         return self.send_request(action, body)
 
-    def cease_s2(self, s2,
+    def cease_s2(self, s2s,
                        **ignore):
         """
         """
         action = const.ACTION_CEASE_S2
-        body = {'s2': s2}
+        body = {'s2s': s2s}
         if not self.req_checker.check_params(body,
-                required_params=['s2'],
+                required_params=['s2s'],
                 integer_params=[],
-                list_params=[]
+                list_params=['s2s']
                 ):
             return None
 
@@ -2252,7 +2252,7 @@ class APIConnection(HttpConnection):
 
         return self.send_request(action, body)
 
-    def describe_s2(self, s2,
+    def describe_s2(self, s2s,
                           status=None,
                           owner=None,
                           verbose=0,
