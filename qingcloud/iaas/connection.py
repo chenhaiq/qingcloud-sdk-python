@@ -2181,7 +2181,7 @@ class APIConnection(HttpConnection):
         """
         """
         action = const.ACTION_SUSPEND_S2
-        body = {'s2s': s2s}
+        body = {'s2s': s2s, 'sub_code': sub_code}
         if not self.req_checker.check_params(body,
                 required_params=['s2s', 'sub_code'],
                 integer_params=['sub_code'],
@@ -2212,7 +2212,7 @@ class APIConnection(HttpConnection):
         """
         """
         action = const.ACTION_TERMINATE_S2
-        body = {'s2s': s2s}
+        body = {'s2s': s2s, 'unlease': unlease}
         if not self.req_checker.check_params(body,
                 required_params=['s2s', 'unlease'],
                 integer_params=['unlease'],
