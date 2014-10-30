@@ -2288,7 +2288,7 @@ class APIConnection(HttpConnection):
         """
         """
         action = const.ACTION_MODIFY_S2_ATTRIBUTES
-        valid_keys = ['s2_type', 'vol_size', 'vxnet_id', 's2_name', 'private_ip']
+        valid_keys = ['s2', 's2_type', 'vol_size', 'vxnet_id', 's2_name', 'private_ip']
         body = filter_out_none(locals(), valid_keys)
         if not self.req_checker.check_params(body,
                 required_params=['vxnet_id'],
