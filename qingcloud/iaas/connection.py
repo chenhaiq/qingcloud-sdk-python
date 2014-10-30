@@ -2277,3 +2277,43 @@ class APIConnection(HttpConnection):
             return None
 
         return self.send_request(action, body)
+
+    def modify_s2_attributes(self, s2,
+                        s2_type='small',
+                        vol_size=50,
+                        vxnet_id=None,
+                        s2_name=None,
+                        private_ip=None,
+                        **ignore):
+        """
+        """
+        action = const.ACTION_MODIFY_S2_ATTRIBUTES
+        valid_keys = ['s2_type', 'vol_size', 'vxnet_id', 's2_name', 'private_ip']
+        body = filter_out_none(locals(), valid_keys)
+        if not self.req_checker.check_params(body,
+                required_params=['vxnet_id'],
+                integer_params=['vol_size'],
+                list_params=[]
+                ):
+            return None
+
+        return self.send_request(action, body)
+
+    def modify_s2_nfs_attributes(self, nfs,
+                        dir='/nfs',
+                        rw=0,
+                        sync=0,
+                        **ignore):
+        """
+        """
+        action = const.ACTION_MODIFY_S2_NFS_ATTRIBUTES
+        valid_keys = ['nfs', 'dir', 'rw', 'sync']
+        body = filter_out_none(locals(), valid_keys)
+        if not self.req_checker.check_params(body,
+                required_params=['nfs'],
+                integer_params=['rw', 'sync'],
+                list_params=[]
+                ):
+            return None
+
+        return self.send_request(action, body)

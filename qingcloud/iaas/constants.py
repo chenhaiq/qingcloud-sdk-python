@@ -143,6 +143,8 @@ ACTION_DELETE_S2S = "DeleteS2s"
 ACTION_CEASE_S2S = "CeaseS2s"
 ACTION_UPDATE_S2S = "UpdateS2s"
 ACTION_DESCRIBE_S2S = "DescribeS2s"
+ACTION_MODIFY_S2_ATTRIBUTES = "ModifyS2Attributes"
+ACTION_MODIFY_S2_NFS_ATTRIBUTES = "ModifyS2NFSAttributes"
 
 ########## Constants for resource ##########
 
