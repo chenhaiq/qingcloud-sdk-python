@@ -2252,7 +2252,7 @@ class APIConnection(HttpConnection):
 
         return self.send_request(action, body)
 
-    def describe_s2s(self, s2s,
+    def describe_s2s(self, s2s=None,
                           status=None,
                           owner=None,
                           verbose=0,
