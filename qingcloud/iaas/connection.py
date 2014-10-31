@@ -2125,7 +2125,7 @@ class APIConnection(HttpConnection):
                         vol_size=50,
                         vxnet_id=None,
                         fs_type='ext4',
-                        lvm_enabled=1,
+                        lvm_enabled=0,
                         s2_name=None,
                         vol_id=None,
                         private_ip=None,
